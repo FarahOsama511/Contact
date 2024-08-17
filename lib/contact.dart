@@ -7,18 +7,18 @@ class Contact {
   String? Imageurl;
   Contact({required this.phone, required this.name, this.Imageurl});
   Contact.fromMap(Map<String, dynamic> map) {
-    this.phone = map[Columnphone] ?? 0;
-    this.name = map[ColumnName] ?? "";
-    if (Imageurl != null) {
-      this.Imageurl = map[ColumnImageurl];
+    phone = map[Columnphone] ?? 0;
+    name = map[ColumnName] ?? "";
+    if (map[ColumnImageurl] != null) {
+      Imageurl = map[ColumnImageurl];
     }
   }
   Map<String, dynamic> toMap() {
     Map<String, dynamic> map = {};
     map[Columnphone] = this.phone;
     map[ColumnName] = this.name;
-    if (Imageurl != null) {
-      map[ColumnImageurl] = this.Imageurl;
+    if (map[ColumnImageurl] != null) {
+      Imageurl = map[ColumnImageurl];
     }
     return map;
   }

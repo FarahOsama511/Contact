@@ -1,5 +1,6 @@
 import 'package:contect/Contact_provider.dart';
 import 'package:contect/contact.dart';
+import 'package:contect/contactdetails.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -93,22 +94,34 @@ class _Homestate extends State<Home> {
               ),
               itemBuilder: (context, index) {
                 Contact contact = contactList[index];
-                return Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  child: Column(
-                    children: [
-                      contact.Imageurl != null
-                          ? Image.network(
-                              contact.Imageurl!,
-                              errorBuilder: (context, error, stackTrace) {
-                                return Icon(Icons.error);
-                              },
-                            )
-                          : Icon(Icons.image_not_supported),
-                      Text(contact.name),
-                      Text(contact.phone.toString()),
-                    ],
+                return SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 25, vertical: 10),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return Contactdetailpage(
+                            contact: contact,
+                          );
+                        }));
+                      },
+                      child: Column(
+                        children: [
+                          contact.Imageurl != null
+                              ? Image.network(
+                                  contact.Imageurl!,
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return Icon(Icons.error);
+                                  },
+                                )
+                              : Icon(Icons.image_not_supported),
+                          Text(contact.name),
+                          Text(contact.phone.toString()),
+                        ],
+                      ),
+                    ),
                   ),
                 );
               },
