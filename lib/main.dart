@@ -58,9 +58,9 @@ class _Homestate extends State<Home> {
   }
 
   Future<void> _loadContacts() async {
-    final books = await ContactProvider.instance.getcontact();
+    final contacts = await ContactProvider.instance.getcontact();
     setState(() {
-      contactList = books;
+      contactList = contacts;
     });
   }
 
